@@ -1,4 +1,4 @@
-name: Push code from Github to Linux VM
+name: Deploy code from Github to Linux VM using SSH
 
 on:
   push:
@@ -6,36 +6,24 @@ on:
       - codepushaws
 
 env:
-  LINUX_VM_IP: 13.233.29.91 # Replace with the IP of your Linux VM
-  LINUX_VM_USERNAME: subha # Replace with the username of your Linux VM
-  LINUX_VM_PASSWORD: 12345 # Replace with the password of your Linux VM
+  HOST: 13.233.29.91
+  USERNAME: subha
+  PASSWORD: 12345
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v1
+    - name: Checkout code from Github repository
+      uses: actions/checkout@v2
 
-    - name: Update code on Linux VM
-      uses: actions/upload-artifact@v1
+    - name: Deploy code to Linux VM using SSH
+      uses: appleboy/ssh-action@master
       with:
-        target: /var/www/html
-        artifact: .
-        login_to_host: ${{ env.LINUX_VM_USERNAME }}
-        host: ${{ env.LINUX_VM_IP }}
-        password: ${{ env.LINUX_VM_PASSWORD }}
+        host: ${{ env.HOST }}
+        username: ${{ env.USERNAME }}
+        password: ${{ env.KEY }}
         script: |
-          sudo cp -R /github/workspace/* /var/www/html
-          sudo chmod -R 777 /var/www/html
-
-    - name: Restart service
-      uses: actions/upload-artifact@v1
-      with:
-        target: /var/www/html
-        login_to_host: ${{ env.LINUX_VM_USERNAME }}
-        host: ${{ env.LINUX_VM_IP }}
-        password: ${{ env.LINUX_VM_PASSWORD }}
-        script: |
-          sudo service apache2 restart
+          sudo mkdir -p /var/www/html
+          sudo rsync -avz . ${USERNAME}@${HOST}:/var/www/html
