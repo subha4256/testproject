@@ -7,8 +7,8 @@ on:
 
 env:
   HOST: 13.233.29.91
-  USERNAME: root
-  PASSWORD: 12345
+  USERNAME: subha
+  KEY: 12345
 
 jobs:
   deploy:
@@ -25,5 +25,5 @@ jobs:
         username: ${{ env.USERNAME }}
         password: ${{ env.KEY }}
         script: |
-           mkdir -p /var/www/html
-           rsync -avz . ${USERNAME}@${HOST}:/var/www/html
+           sudo mkdir -p /var/www/html
+           sudo rsync -avz . ${USERNAME}@${HOST}:/var/www/html
