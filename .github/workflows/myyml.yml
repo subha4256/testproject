@@ -7,7 +7,7 @@ on:
 
 env:
   HOST: 13.233.29.91
-  USERNAME: subha
+  USERNAME: root
   PASSWORD: 12345
 
 jobs:
