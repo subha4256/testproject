@@ -5,10 +5,7 @@ on:
     branches:
       - codepushaws
 
-env:
-  HOST: 13.233.29.91
-  USERNAME: subha
-  PASSWORD: 12345
+
 
 jobs:
   deploy:
@@ -21,9 +18,9 @@ jobs:
     - name: Deploy code to Linux VM using SSH
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ env.HOST }}
-        username: ${{ env.USERNAME }}
-        password: ${{ env.PASSWORD }}
+        host: 13.233.29.91
+        username: subha
+        password: 12345
         script: |
            sudo mkdir -p /var/www/html
            sudo rsync -avz . ${USERNAME}@${HOST}:/var/www/html
