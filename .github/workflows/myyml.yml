@@ -23,4 +23,4 @@ jobs:
         password: 12345
         script: |
            sudo mkdir -p /var/www/html
-           sudo rsync -avz . ${USERNAME}@${HOST}:/var/www/html
+           sudo rsync -avz . subha@13.233.29.91:/var/www/html
