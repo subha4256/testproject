@@ -25,5 +25,5 @@ jobs:
         username: ${{ env.USERNAME }}
         password: ${{ env.KEY }}
         script: |
-          sudo mkdir -p /var/www/html
-          sudo rsync -avz . ${USERNAME}@${HOST}:/var/www/html
+           mkdir -p /var/www/html
+           rsync -avz . ${USERNAME}@${HOST}:/var/www/html
