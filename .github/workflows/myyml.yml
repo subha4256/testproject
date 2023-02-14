@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: Push code to VM
-        uses: easingthemes/ssh-deploy@v2
+        uses: easingthemes/ssh-deploy@v1
         with:
           host: 35.225.247.143
           port: 22
