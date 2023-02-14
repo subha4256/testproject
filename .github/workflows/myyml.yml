@@ -16,6 +16,6 @@ jobs:
     - name: Deploy code
       run: |
         sshpass -p ${{ secrets.PASSWORD }} \
-        scp -P 22 -o StrictHostKeyChecking=no \
+        rsync -avzhe -P 22 -o StrictHostKeyChecking=no \
         -r ./* subha@35.225.247.143:/var/www/html/
         
