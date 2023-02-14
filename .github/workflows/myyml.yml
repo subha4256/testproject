@@ -1,24 +1,20 @@
-name: Push code to VM using SSH
+name: Deploy to VM
 
 on:
   push:
     branches:
-      - codepushaws
+      - awscodepush
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
 
-      - name: Push code to VM
-        uses: easingthemes/ssh-deploy@v1
-        with:
-          host: 35.225.247.143
-          port: 22
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: .
-          target: /var/www/html
-          flags: '-avz --delete'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Deploy code
+      run: |
+        sshpass -p ${{ secrets.PASSWORD }} \
+        scp -P 22 -o StrictHostKeyChecking=no \
+        -r ./* subha@35.225.247.143:/path/to/destination/
