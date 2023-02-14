@@ -17,4 +17,4 @@ jobs:
       run: |
         sshpass -p ${{ secrets.PASSWORD }} \
         scp -P 22 -o StrictHostKeyChecking=no \
-        -r ./* subha@35.225.247.143:/path/to/destination/
+        -r ./* subha@35.225.247.143:/var/www/html/
