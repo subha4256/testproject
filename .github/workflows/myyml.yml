@@ -1,26 +1,24 @@
-name: Deploy code from Github to Linux VM using SSH
+name: Push code to VM using SSH
 
 on:
   push:
     branches:
       - codepushaws
 
-
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code from Github repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Deploy code to Linux VM using SSH
-      uses: appleboy/ssh-action@master
-      with:
-        host: 13.233.29.91
-        username: subha
-        password: 12345
-        script: |
-           sudo mkdir -p /var/www/html
-           sudo rsync -avz . subha@13.233.29.91:/var/www/html
+      - name: Push code to VM
+        uses: easingthemes/ssh-deploy@v2
+        with:
+          host: 35.225.247.143
+          port: 22
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: .
+          target: /var/www/html
+          flags: '-avz --delete'
