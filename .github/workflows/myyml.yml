@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.AZUREFTP_USER }}
           password: ${{ secrets.AZUREFTP_PASSWORD }}
           local-dir: /
-          remote-dir: /site/wwwroot
+          remote-dir: :ftps//waws-prod-blu-431.ftp.azurewebsites.windows.net/site/wwwroot
