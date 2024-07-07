@@ -7,7 +7,7 @@ FROM docker.io/oberd/php-7.4-apache:latest
 
 # Add your additional instructions here
 # For example:
- COPY . /var/www/html/
+ COPY . /var/www/localhost/htdocs/
 
 # Expose ports if needed
  #EXPOSE 80
