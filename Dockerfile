@@ -3,7 +3,7 @@
 #COPY . /var/www/html/
 
 # Dockerfile
-FROM php-7.4-apache:latest
+FROM docker.io/oberd/php-7.4-apache:latest
 
 # Add your additional instructions here
 # For example:
