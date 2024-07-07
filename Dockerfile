@@ -1,3 +1,4 @@
 From nginx
-#apt-get instal php8.2
-copy . /user/share/nginx/html
+WORKDIR /user/share/nginx/html
+ADD . /user/share/nginx/html/
+
