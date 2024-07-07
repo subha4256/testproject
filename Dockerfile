@@ -10,7 +10,7 @@ FROM docker.io/oberd/php-7.4-apache:latest
  COPY . /var/www/html/
 
 # Expose ports if needed
- EXPOSE 80
+ #EXPOSE 80
 
 # Define default command to start the container
- CMD ["apache2-foreground"]
+ #CMD ["apache2-foreground"]
