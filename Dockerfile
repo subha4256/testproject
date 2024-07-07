@@ -1,4 +1,4 @@
-From nginx
-WORKDIR /user/share/nginx/html
-ADD . /user/share/nginx/html/
+From oberd/php-7.4-apache
+WORKDIR /var/www/html
+ADD . /var/www/html/
 
